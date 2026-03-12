@@ -1,0 +1,6 @@
+
+## 3/12/26 5:45PM:
+
+I know this project requires three programs: a logger, an encryption program, and a driver program. The logger writes log messages to a log file, and will include the time, an action, and a message for each entry. The encryption program accepst commands from standard input and is used to set a password, encrypt and decrypt words using the password, and quit the program. The encryption program will always respond with either a result or an error. The driver will create two processes to execute the logger and encryption programs, and prompts the user to use the following commands: password, encrypt, decrypt, history, quit.
+
+My plan is to complete the project in 3 or 4 sessions, with each session focusing on a specfic program. I'll first start with the logger since it just needs to accept standard input and write to a file. Then, I'll work on the encryption program and make sure the Vigenere cipher and passkey logic work. Last, I'll build the driver program to handle user menus and fork the other processes.
