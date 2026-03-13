@@ -8,6 +8,7 @@ def vigenereEncrypt(text, key):
         plain = ord(char) - ord('A')
         shift = ord(key[i % len(key)]) - ord('A')
 
+        # Add the shift for each number and convert back to char
         cipher = (plain + shift + 26) % 26
         res.append(chr(cipher + ord('A')))
 
@@ -21,7 +22,7 @@ def vigenereDecrypt(text, key):
         cipher = ord(char) - ord('A')
         shift = ord(key[i % len(key)]) - ord('A')
         
-        # Reverse the cipher math and convert back to a letter
+        # Subtract the shift for each number and convert back to char
         plain = (cipher - shift + 26) % 26
         res.append(chr(plain + ord('A')))
         
@@ -48,26 +49,33 @@ def main():
             break
 
         elif command == "PASS":
-            passkey = argument
-            print("RESULT: New passkey set")
+            if not argument:
+                print("ERROR Passkey argument missing")
+            else:
+                passkey = argument
+                print("RESULT")
         
         elif command == "ENCRYPT":
             if not passkey:
-                print("ERROR: Passkey not set")
+                print("ERROR Passkey not set")
+            elif not argument:
+                print("ERROR Nothing to encrypt")
             else:
                 res = vigenereEncrypt(argument, passkey)
-                print("RESULT: ", res)
+                print("RESULT", res)
 
         
         elif command == "DECRYPT":
             if not passkey:
-                print("ERROR: Passkey not set")
+                print("ERROR Passkey not set")
+            elif not argument:
+                print("ERROR Nothing to decrypt")
             else:
                 res = vigenereDecrypt(argument, passkey)
-                print("RESULT: ", res)
+                print("RESULT", res)
         
         else:
-            print("ERROR: Invalid command")
+            print("ERROR Invalid command")
 
 if __name__ == "__main__":
     main()
