@@ -47,3 +47,18 @@ I accomplished my goal to finish the encryption program. I first set up the comm
 Some issues I faced were that I had some trouble with making the cipher at first because I was adding the shift for both the encryption and decryption, but this was easily fixed. Also had to add error checking when dealing with commands, such as making sure the PASS, ENCRYPT, and DECRYPT commands actually have an argument following it. I also changed the output of the PASS command to reflect what's shown in the assignment.
 
 Next session I plan on working on the driver program. I'll use Python's subprocess module to launch the logger and encryption programs and set up the pipes to connect to their std input and output. This will be reflected using the password, encrypt, decrypt, and history commands.
+
+## 3/13/26 5:00 PM:
+
+Thoughts so far:
+I've built and tested the logger and encryption programs, so now I'm ready to connect the two with the driver program using pipes. 
+
+Plan for this session:
+My goal is to start implementing the driver program. I will:
+1. Accept the log file name as a command line arg.
+2. Use Python's subprocess module to launch the logger and encryption programs as new processes, and connect to their standard input and standard output via pipes.
+3. Send an initial log message for the start of the driver.
+4. Make a loop that prints a menu and prompts the user for commands (password, encrypt, decrypt, history, quit).
+5. Set up a temporary history to save strings for encryption or decryption used during this run.
+6. Implement error checking so that user only inputs letters for the encrypt, decrypt, and password commands.
+7. Make sure the user input is case insensitive before passing it to the encryption backend.
