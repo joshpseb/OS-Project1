@@ -26,3 +26,15 @@ I accomplished my goal to finish the logger program. During this session, I set 
 Some issues I faced were that I didn't add a new line to my log entry so all the entries appended on one line. This was easily fixed by adding "\n" to the end of the log entry. When getting the date and time through datetime.now(), I didn't realize it included seconds and smaller at first so I removed that after. Also, when I was writing log entries to the file I first opened the log file in write mode so it was removing all the previous logs each time I ran the program. This was fixed by changing to append mode instead.
 
 Next session I plan on working on the encryption program and finishing most of if not all of it. I'll need to set up the command loop to handle PASS, ENCRYPT, and DECRYPT, and I also need to correctly implement and test the Vigenere cipher.
+
+## 3/13/26 2:00PM:
+
+Thoughts so far:
+I finished the logger program in my last session and made sure it is correctly appending log entries to a log file. Now that the logging is done, I'm ready to work on the the encryption program.
+
+My goal for this session is to implement most of the encryption program if not all of it. I will:
+1. Set up a loop to accept commands from stdin.
+2. Parse the input so the first word is the command and the rest of the line is the argument.
+3. Implement PASS to set the passkey, ENCRYPT to apply the Vigenere cipher, DECRYPT to reverse it, and QUIT to exit.
+4. Make sure the program outputs RESULT on success or ERROR if it fails.
+5. Build the Vigenère cipher logic, keeping in mind that it only works on letters and is case insensitive.
