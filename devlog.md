@@ -38,3 +38,12 @@ My goal for this session is to implement most of the encryption program if not a
 3. Implement PASS to set the passkey, ENCRYPT to apply the Vigenere cipher, DECRYPT to reverse it, and QUIT to exit.
 4. Make sure the program outputs RESULT on success or ERROR if it fails.
 5. Build the Vigenère cipher logic, keeping in mind that it only works on letters and is case insensitive.
+
+## 3/13/26 3:30 PM:
+
+Reflection on Session 2:
+I accomplished my goal to finish the encryption program. I first set up the command loop then implemented the vigenere cypher math to correctly run ENCRYPT and DECRYPT.
+
+Some issues I faced were that I had some trouble with making the cipher at first because I was adding the shift for both the encryption and decryption, but this was easily fixed. Also had to add error checking when dealing with commands, such as making sure the PASS, ENCRYPT, and DECRYPT commands actually have an argument following it. I also changed the output of the PASS command to reflect what's shown in the assignment.
+
+Next session I plan on working on the driver program. I'll use Python's subprocess module to launch the logger and encryption programs and set up the pipes to connect to their std input and output. This will be reflected using the password, encrypt, decrypt, and history commands.
