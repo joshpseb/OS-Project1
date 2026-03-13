@@ -39,7 +39,7 @@ My goal for this session is to implement most of the encryption program if not a
 4. Make sure the program outputs RESULT on success or ERROR if it fails.
 5. Build the Vigenère cipher logic, keeping in mind that it only works on letters and is case insensitive.
 
-## 3/13/26 3:30 PM:
+## 3/13/26 3:30PM:
 
 Reflection on Session 2:
 I accomplished my goal to finish the encryption program. I first set up the command loop then implemented the vigenere cypher math to correctly run ENCRYPT and DECRYPT.
@@ -48,7 +48,7 @@ Some issues I faced were that I had some trouble with making the cipher at first
 
 Next session I plan on working on the driver program. I'll use Python's subprocess module to launch the logger and encryption programs and set up the pipes to connect to their std input and output. This will be reflected using the password, encrypt, decrypt, and history commands.
 
-## 3/13/26 5:00 PM:
+## 3/13/26 5:00PM:
 
 Thoughts so far:
 I've built and tested the logger and encryption programs, so now I'm ready to connect the two with the driver program using pipes. 
@@ -62,3 +62,14 @@ My goal is to start implementing the driver program. I will:
 5. Set up a temporary history to save strings for encryption or decryption used during this run.
 6. Implement error checking so that user only inputs letters for the encrypt, decrypt, and password commands.
 7. Make sure the user input is case insensitive before passing it to the encryption backend.
+
+## 3/13/26 7:00PM
+
+Reflection on session 3:
+I accomplished some of my goals, as I got the driver program started and implemented the password command. I still need to work on encrypt, decrypt, and history.
+
+Issues I faced:
+I wasn't familiar with the subprocess module in python so I had to do some research on it. I was getting a TypeError when running a program, but after doing some research I learned that I need to add "text=True" to the subprocess so that Python knows to handle strings automatically.
+I learned that I need to use flush to send whatever I write to a process immediately through a pipe, or else it'll just sit there and not do anything. When I tried running the password command I had this issue, and I realized I needed to flush the standard output of the logger and encryption as well or else their outputs will sit in a buffer and not immediately be sent out through the pipe. Nothing was showing up in the log file too because that also needed a flush statement after an entry was written to log.txt. I removed the error checking for the log file in logger.py since that can actually be done in the driver. I realized that my logger subprocess was using encryption.py which was why log.txt wasn't changing after setting a password.
+
+Next session I plan to finish the project by implementing the encrypt, decrypt, and history commands in driver.py. I'll reuse the history menu logic from the password command and make sure that the strings entered and the results returned from the backend are properly added to the driver's temp history list. I'll also create a README.
