@@ -17,3 +17,12 @@ The goal is to fully implement the logger program. I will:
 3. Parse the input so that the first group of characters is treated as the ACTION and the rest of the line is the MESSAGE.
 4. Make a timestamp using the format YYYY-MM-DD HH:MM.
 5. Format the final output string as "YYYY-MM-DD HH:MM [ACTION] MESSAGE" and append it to the log file.
+
+## 3/12/26 7:30PM:
+
+Reflections on Session 1:
+I accomplished my goal to finish the logger program. During this session, I set up the code to accept the log file as a command line argument, then created a stdin loop to read incoming messages and used datetime to get the current time for the timestamp.
+
+Some issues I faced were that I didn't add a new line to my log entry so all the entries appended on one line. This was easily fixed by adding "\n" to the end of the log entry. When getting the date and time through datetime.now(), I didn't realize it included seconds and smaller at first so I removed that after. Also, when I was writing log entries to the file I first opened the log file in write mode so it was removing all the previous logs each time I ran the program. This was fixed by changing to append mode instead.
+
+Next session I plan on working on the encryption program and finishing most of if not all of it. I'll need to set up the command loop to handle PASS, ENCRYPT, and DECRYPT, and I also need to correctly implement and test the Vigenere cipher.
