@@ -76,12 +76,11 @@ while True:
             else:
                 while True:
                     print("\n---History---")
+                    # User can exit history if they want
+                    print("0. Exit history and enter a new string")
                     # Prints numbered list form 1 to n
                     for i, savedString in enumerate(history):
                         print(f"{i + 1}. {savedString}")
-                    
-                    # User can exit history if they want
-                    print("0. Exit history and enter a new string")
                     
                     histNum = input("Select a number: ")
                     
@@ -141,13 +140,12 @@ while True:
             else:
                 while True:
                     print("\n---History---")
+                    # User can exit history if they want
+                    print("0. Exit history and enter a new string")
                     # Prints numbered list form 1 to n
                     for i, savedString in enumerate(history):
                         print(f"{i + 1}. {savedString}")
                     
-                    # User can exit history if they want
-                    print("0. Exit history and enter a new string")
-
                     histNum = input("Select a number: ").strip()
                     
                     if histNum == '0':
@@ -213,12 +211,12 @@ while True:
             else:
                 while True:
                     print("\n---History---")
+                    # User can exit history if they want
+                    print("0. Exit history and enter a new string")
                     # Prints numbered list form 1 to n
                     for i, savedString in enumerate(history):
                         print(f"{i + 1}. {savedString}")
                     
-                    # User can exit history if they want
-                    print("0. Exit history and enter a new string")
                     histNum = input("Select a number: ").strip()
                     
                     if histNum == '0':
@@ -266,6 +264,16 @@ while True:
     elif command == "history":
         
         loggerProcess.stdin.write("CMD User selected history command.\n")
+        loggerProcess.stdin.flush()
+
+        print("\n---Session History---")
+        if len(history) == 0:
+            print("History is currently empty.")
+        else:
+            for i, savedString in enumerate(history):
+                print(f"{i + 1}. {savedString}")
+                
+        loggerProcess.stdin.write("RESULT History displayed successfully.\n")
         loggerProcess.stdin.flush()
     
     else:
