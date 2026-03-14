@@ -77,5 +77,9 @@ def main():
         else:
             print("ERROR Invalid command")
 
+        # Makes sure every response is outputted from the pipe instantly.
+        sys.stdout.flush()
+
+
 if __name__ == "__main__":
     main()

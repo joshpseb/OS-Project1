@@ -7,10 +7,10 @@ My plan is to complete the project in 3 or 4 sessions, with each session focusin
 
 ## 3/12/26 6:15PM:
 
-Thoughts so far:
+### Thoughts so far:
 I created my repository and made an initial commit. I'm ready to start working on the project, beginning with the logger since I think it's the most straightforward.
 
-Plans for this session:
+### Plans for this session:
 The goal is to fully implement the logger program. I will:
 1. Set up the program to accept a single command line argument, which will be the name of the log file.
 2. Create a continuous loop that reads lines of text from standard input until the word "QUIT" is inputted.
@@ -20,7 +20,7 @@ The goal is to fully implement the logger program. I will:
 
 ## 3/12/26 7:30PM:
 
-Reflections on Session 1:
+### Reflections on Session 1:
 I accomplished my goal to finish the logger program. During this session, I set up the code to accept the log file as a command line argument, then created a stdin loop to read incoming messages and used datetime to get the current time for the timestamp.
 
 Some issues I faced were that I didn't add a new line to my log entry so all the entries appended on one line. This was easily fixed by adding "\n" to the end of the log entry. When getting the date and time through datetime.now(), I didn't realize it included seconds and smaller at first so I removed that after. Also, when I was writing log entries to the file I first opened the log file in write mode so it was removing all the previous logs each time I ran the program. This was fixed by changing to append mode instead.
@@ -29,9 +29,10 @@ Next session I plan on working on the encryption program and finishing most of i
 
 ## 3/13/26 2:00PM:
 
-Thoughts so far:
+### Thoughts so far:
 I finished the logger program in my last session and made sure it is correctly appending log entries to a log file. Now that the logging is done, I'm ready to work on the the encryption program.
 
+### Plan for this session:
 My goal for this session is to implement most of the encryption program if not all of it. I will:
 1. Set up a loop to accept commands from stdin.
 2. Parse the input so the first word is the command and the rest of the line is the argument.
@@ -41,7 +42,7 @@ My goal for this session is to implement most of the encryption program if not a
 
 ## 3/13/26 3:30PM:
 
-Reflection on Session 2:
+### Reflection on Session 2:
 I accomplished my goal to finish the encryption program. I first set up the command loop then implemented the vigenere cypher math to correctly run ENCRYPT and DECRYPT.
 
 Some issues I faced were that I had some trouble with making the cipher at first because I was adding the shift for both the encryption and decryption, but this was easily fixed. Also had to add error checking when dealing with commands, such as making sure the PASS, ENCRYPT, and DECRYPT commands actually have an argument following it. I also changed the output of the PASS command to reflect what's shown in the assignment.
@@ -50,10 +51,10 @@ Next session I plan on working on the driver program. I'll use Python's subproce
 
 ## 3/13/26 5:00PM:
 
-Thoughts so far:
+### Thoughts so far:
 I've built and tested the logger and encryption programs, so now I'm ready to connect the two with the driver program using pipes. 
 
-Plan for this session:
+### Plan for this session:
 My goal is to start implementing the driver program. I will:
 1. Accept the log file name as a command line arg.
 2. Use Python's subprocess module to launch the logger and encryption programs as new processes, and connect to their standard input and standard output via pipes.
@@ -65,10 +66,10 @@ My goal is to start implementing the driver program. I will:
 
 ## 3/13/26 7:00PM
 
-Reflection on session 3:
+### Reflection on session 3:
 I accomplished some of my goals, as I got the driver program started and implemented the password command. I still need to work on encrypt, decrypt, and history.
 
-Issues I faced:
+### Issues I faced:
 I wasn't familiar with the subprocess module in python so I had to do some research on it. I was getting a TypeError when running a program, but after doing some research I learned that I need to add "text=True" to the subprocess so that Python knows to handle strings automatically.
 I learned that I need to use flush to send whatever I write to a process immediately through a pipe, or else it'll just sit there and not do anything. When I tried running the password command I had this issue, and I realized I needed to flush the standard output of the logger and encryption as well or else their outputs will sit in a buffer and not immediately be sent out through the pipe. Nothing was showing up in the log file too because that also needed a flush statement after an entry was written to log.txt. I removed the error checking for the log file in logger.py since that can actually be done in the driver. I realized that my logger subprocess was using encryption.py which was why log.txt wasn't changing after setting a password.
 
@@ -76,12 +77,23 @@ Next session I plan to finish the project by implementing the encrypt, decrypt, 
 
 ## 3/13/26 8:00PM
 
-Thoughts so far:
+### Thoughts so far:
 The subprocess pipes seem to be working correctly, logging is working, and the password command talks to the encryption backend. In this session I plan on completing the project, finishing up the encrypt, decrypt, and history commands along with a README. The encrypt and decrypt commands should be quite easy to implement since they follow a similar structure to the password command.
 
+### Plan for this session:
 My goal for this final session is to complete the driver program and finish the project. I will:
 1. Implement the encrypt and decrypt commands using the exact same history menu and input validation logic I built for the password command.
 2. Make sure that the strings entered by the user for encryption/decryption and the resulting strings returned from the backend are appended to the history list.
 3. Implement the history command to print out all items currently stored in the temporary history list.
 4. Do a final  test to ensure all edge cases are caught, the log file looks correct, and the processes shut down cleanly without hanging.
 5. Make a README that describes all the files and how to run the code.
+
+## 3/13/26 9:40PM:
+
+### Reflection on session 4:
+I successfully implemented the driver and created a README, fully completing the project. It was quite easy to implement encrypt and decrypt as expected, since most of the logic was the same as password which I had done earlier. The history command was also very simple since it just required interating through a list.
+
+I spend a good amount of time running through all edge cases that I could think of. I made sure that the driver only took letters in the input, and that history doesn't include any passwords. I also confirmed that if there is no history the user is forced to make a new string, and that the program shuts down without any deadlock like earlier. Furthermore, log.txt is accurately tracking all the events from the driver.
+
+### Project status:
+At this point, the project is finished and the code has been fully tested so I'm ready for submission.
