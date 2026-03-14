@@ -73,3 +73,15 @@ I wasn't familiar with the subprocess module in python so I had to do some resea
 I learned that I need to use flush to send whatever I write to a process immediately through a pipe, or else it'll just sit there and not do anything. When I tried running the password command I had this issue, and I realized I needed to flush the standard output of the logger and encryption as well or else their outputs will sit in a buffer and not immediately be sent out through the pipe. Nothing was showing up in the log file too because that also needed a flush statement after an entry was written to log.txt. I removed the error checking for the log file in logger.py since that can actually be done in the driver. I realized that my logger subprocess was using encryption.py which was why log.txt wasn't changing after setting a password.
 
 Next session I plan to finish the project by implementing the encrypt, decrypt, and history commands in driver.py. I'll reuse the history menu logic from the password command and make sure that the strings entered and the results returned from the backend are properly added to the driver's temp history list. I'll also create a README.
+
+## 3/13/26 8:00PM
+
+Thoughts so far:
+The subprocess pipes seem to be working correctly, logging is working, and the password command talks to the encryption backend. In this session I plan on completing the project, finishing up the encrypt, decrypt, and history commands along with a README. The encrypt and decrypt commands should be quite easy to implement since they follow a similar structure to the password command.
+
+My goal for this final session is to complete the driver program and finish the project. I will:
+1. Implement the encrypt and decrypt commands using the exact same history menu and input validation logic I built for the password command.
+2. Make sure that the strings entered by the user for encryption/decryption and the resulting strings returned from the backend are appended to the history list.
+3. Implement the history command to print out all items currently stored in the temporary history list.
+4. Do a final  test to ensure all edge cases are caught, the log file looks correct, and the processes shut down cleanly without hanging.
+5. Make a README that describes all the files and how to run the code.
